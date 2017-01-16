@@ -39,10 +39,8 @@ set(librtmp_headers
 # will not exist as a target when this library is used
 #get_property(zlib_target_location TARGET ${ZLIB_LIBRARIES} PROPERTY LOCATION)
 set(librtmp_libs
-    OpenSSL::SSL
-    OpenSSL::Crypto
-    ZLIB::zlib
-    ${zlib_target_location}
+    ${OPENSSL_LIBRARIES}
+    ${ZLIB_LIBRARIES}
 )
 
 if(WIN32)
