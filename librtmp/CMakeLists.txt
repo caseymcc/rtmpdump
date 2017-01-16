@@ -12,10 +12,10 @@ include(GenerateExportHeader)
 project(librtmp VERSION 2.4)
 
 hunter_add_package(OpenSSL)
-find_package(OpenSSL CONFIG REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 hunter_add_package(ZLIB)
-find_package(ZLIB CONFIG REQUIRED)
+find_package(ZLIB REQUIRED)
 
 set(librtmp_source
     amf.c
