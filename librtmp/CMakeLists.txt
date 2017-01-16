@@ -12,10 +12,10 @@ include(GenerateExportHeader)
 project(librtmp VERSION 2.4)
 
 hunter_add_package(OpenSSL)
-find_package(OpenSSL REQUIRED)
+find_package(OpenSSL CONFIG REQUIRED)
 
 hunter_add_package(ZLIB)
-find_package(ZLIB REQUIRED)
+find_package(ZLIB CONFIG REQUIRED)
 
 set(librtmp_source
     amf.c
@@ -37,9 +37,11 @@ set(librtmp_headers
 
 #including target file location instead as ZLIB::zlib (${ZLIB_LIBRARIES}=="ZLIB::zlib") 
 # will not exist as a target when this library is used
-get_property(zlib_target_location TARGET ${ZLIB_LIBRARIES} PROPERTY LOCATION)
+#get_property(zlib_target_location TARGET ${ZLIB_LIBRARIES} PROPERTY LOCATION)
 set(librtmp_libs
-    ${OPENSSL_LIBRARIES}
+    OpenSSL::SSL
+    OpenSSL::Crypto
+    ZLIB::zlib
     ${zlib_target_location}
 )
 
